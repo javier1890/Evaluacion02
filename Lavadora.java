@@ -20,8 +20,14 @@ public class Lavadora extends Electrodomestico {
 	public Lavadora(double carga,String color, char ce, double peso, double precio) {
 		super(color,ce, peso, precio);
 		this.carga=carga;
+	}
+	
+	public Lavadora(double carga,String color, char ce, double peso) {
+		super(color,ce, peso);
+		this.carga=carga;
 		
 	}
+	
 
 	
 	
@@ -46,6 +52,11 @@ public class Lavadora extends Electrodomestico {
 		this.setPrecio(precioLavadora);
 		return precioLavadora;
 		
+	}
+
+	@Override
+	public String toString() {
+		return "Lavadora [carga=" + carga +" ,color="+super.getColor()+" ,peso="+super.getPeso()+" ,precio="+this.precioFinal()+"]";
 	}
 	
 

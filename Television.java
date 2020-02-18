@@ -24,6 +24,13 @@ public class Television extends Electrodomestico {
 		this.sincronizador = sincronizador;
 
 	}
+	
+	public Television(int resolucion, Boolean sincronizador, String color, char ce, double peso) {
+		super(color, ce, peso);
+		this.resolucion = resolucion;
+		this.sincronizador = sincronizador;
+
+	}
 
 	public int getResolucion() {
 		return resolucion;
@@ -36,18 +43,27 @@ public class Television extends Electrodomestico {
 	@Override
 	public double precioFinal() {
 		double valor=0;
-		double precioLavadora=super.precioFinal();
+		double precioTelevisor=super.precioFinal();
+		
 		
 		if (this.getResolucion()>40) {
-			valor+=precioLavadora*1.30;
+			valor+=precioTelevisor*1.30;
 			
 			if (this.isSincronizador()==true) {
 				valor+=45000;
 			}
-			
+			return valor;
+		}else {
+			valor=precioTelevisor;
+			return valor;
 		}
 		
-		this.setPrecio(valor);
-		return valor;
 	}
+
+	@Override
+	public String toString() {
+		return "Television [resolucion=" + resolucion + ", sincronizador=" + sincronizador +" ,color="+super.getColor()+" ,consumo electrico="+super.getCe()+" ,peso="+super.getPeso()+" ,precio="+this.precioFinal()+"]";
+	}
+	
+	
 }

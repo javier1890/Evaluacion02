@@ -29,6 +29,15 @@ public class Electrodomestico {
 		this.ce = comprobarConsumoEnergia(ce);
 		this.peso = peso;
 		this.precio = precio;
+		
+		
+	}
+	
+	public Electrodomestico(String color, char ce, double peso) {
+		this.color = comprobarColor(color);
+		this.ce = comprobarConsumoEnergia(ce);
+		this.peso = peso;		
+		
 	}
 
 	public String getColor() {
@@ -112,9 +121,9 @@ public class Electrodomestico {
 	}
 
 	public double precioFinal() {
-		double cost = 0;
+		double cost=0;
 
-		switch (this.ce) {
+		switch (this.getCe()) {
 		case 'A':
 			cost += 85000;
 			break;
@@ -133,18 +142,24 @@ public class Electrodomestico {
 		case 'F':
 			cost += 8500;
 			break;
+			
+		default:
+			cost+=PRECIO_BASE_DEFINIDO;
+		break;
+		
+
 
 		}
 
-		if (this.peso >= 0 && this.peso <= 19) {
+		if (this.getPeso() >= 0 && this.getPeso() <= 19) {
 			cost += 8500;
-		} else if (this.peso >= 20 && this.peso <= 49) {
+		} else if (this.getPeso() >= 20 && this.getPeso() <= 49) {
 			cost += 40000;
 
-		} else if (this.peso >= 50 && this.peso <= 79) {
+		} else if (this.getPeso() >= 50 && this.getPeso() <= 79) {
 			cost += 70000;
 
-		} else if (this.peso > 80) {
+		} else if (this.getPeso() > 80) {
 			cost += 85000;
 		}
 		return cost;
